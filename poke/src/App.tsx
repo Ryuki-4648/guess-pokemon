@@ -1,35 +1,64 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import logo from "./logo01.png";
 import "./App.css";
+import zukanList from "./zukanList.json";
 
 function App() {
-  return (
-    <div className="App h-screen">
-      <header className="App-header">
-        <img src={logo} className="App-logo w-7" alt="logo" />
-      </header>
-      <div className="overflow-y-scroll">
-        <p className="mb-10 text-8xl font-extrabold leading-relaxed">
-          図鑑の説明がランダムで表示される。図鑑の説明がランダムで表示される。
-        </p>
-        <p className="text-5xl font-extrabold">「ゲームの名前」より</p>
-      </div>
-      <p>
-        ポケモン図鑑の説明から、なんのポケモンか当ててください。カタカナで入力してください。数字がある場合は半角。
-      </p>
-      <p className="text-blue-800">次のクイズに進む</p>
+  const randomZukan = zukanList[Math.floor(Math.random() * zukanList.length)];
+  //console.log(randomZukan.answer);
+  const onClickNextQuiz = () => {
+    console.log("next");
+  };
+  const onClickSubmitButton = () => {
+    console.log("submit");
+  };
 
-      <div className="flex items-center">
-        <input
-          type="text"
-          placeholder="ポケモンの名前"
-          className="h-16 w-80 p-2 text-3xl"
+  const [answer, setAnswer] = useState("");
+
+  return (
+    <div className="App overflow-y-hidden">
+      <header className="App-header flex h-12 items-center border-b border-gray-900">
+        <img
+          src={logo}
+          className="App-logo mr-2 w-24 border-r border-gray-900 px-2"
+          alt="logo"
         />
-        <p className="mx-2 text-3xl font-bold">に</p>
-        <button className="h-16 w-80 bg-red-700 text-3xl text-white">
-          きめた！
-        </button>
-      </div>
+        <p className="text-lg font-bold tracking-wider">
+          ポケモンずかんの説明から、なんのポケモンか当ててください。
+        </p>
+      </header>
+      <section className="relative">
+        <div className="l-question overflow-y-scroll">
+          <p className="mb-16 text-8xl font-extrabold leading-relaxed">
+            {randomZukan.question}
+          </p>
+          <p className="mb-16 text-5xl font-extrabold">
+            『{randomZukan.game}』より
+          </p>
+        </div>
+        <p
+          className="absolute bottom-4 right-8 cursor-pointer text-xl text-blue-800"
+          onClick={onClickNextQuiz}
+        >
+          次のクイズに進む
+        </p>
+      </section>
+      <section className="border-t border-gray-900">
+        <div className="flex h-24 items-center justify-center">
+          <input
+            type="text"
+            placeholder="ポケモンの名前"
+            className="h-16 w-80 cursor-pointer p-2 text-3xl"
+          />
+          <p className="mx-6 text-4xl font-bold">に</p>
+          <button
+            className="h-16 w-80 bg-red-700 text-3xl font-bold text-white"
+            onClick={onClickSubmitButton}
+          >
+            きめた！
+          </button>
+        </div>
+      </section>
     </div>
   );
 }
