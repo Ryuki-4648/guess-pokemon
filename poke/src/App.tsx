@@ -10,9 +10,14 @@ function App() {
   //console.log(randomZukan.answer);
   const onClickNextQuiz = () => {
     setRandomZukan(zukanList[Math.floor(Math.random() * zukanList.length)]);
+    setInputText("");
   };
   const onClickSubmitButton = () => {
-    console.log("submit");
+    if (inputText === randomZukan.answer) {
+      console.log("正解");
+    } else {
+      console.log("不正解");
+    }
   };
 
   const [answer, setAnswer] = useState("");
@@ -71,6 +76,7 @@ function App() {
               placeholder="ポケモンの名前"
               className="h-16 w-72 cursor-pointer p-2 text-2xl"
               value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
             />
             <p className="mx-6 text-4xl font-bold">に</p>
             <button
