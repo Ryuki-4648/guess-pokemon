@@ -12,6 +12,7 @@ function App() {
     setRandomZukan(zukanList[Math.floor(Math.random() * zukanList.length)]);
     setInputText("");
     setResult("");
+    setModalShow(false);
   };
   const onClickSubmitButton = () => {
     if (inputText === randomZukan.answer) {
@@ -20,23 +21,40 @@ function App() {
       setResult("×");
     }
   };
+  const onClickModalClose = () => {
+    setModalShow(false);
+  };
+  const [modalShow, setModalShow] = useState(true);
 
   const [answer, setAnswer] = useState("");
   const [inputText, setInputText] = useState("");
   const [result, setResult] = useState("");
 
   return (
-    <div className="App overflow-y-hidden">
-      <header className="l-header flex items-center border-b border-gray-900">
-        <img
-          src={logo}
-          className="App-logo mr-2 w-24 border-r border-gray-900 px-2"
-          alt="logo"
-        />
-        <p className="text-lg font-bold tracking-wider">
-          ポケモンずかんの文章から、なんのポケモンか当ててください。
-        </p>
-      </header>
+    <div className="App relative overflow-y-hidden">
+      {modalShow && (
+        <div className="hoge l-modal absolute left-1/2 top-1/2 z-10 h-4/5 w-1/3 rounded-md p-8">
+          <header className="l-header flex flex-wrap items-center">
+            <img src={logo} className="App-logo mr-2 w-24 px-2" alt="logo" />
+            <p className="w-full text-center text-xl font-bold leading-8 tracking-wider">
+              ポケモンずかんの文章から、
+              <br />
+              なんのポケモンか当ててください。
+              <br />
+              <br />
+              こたえはカタカナで入力してください。
+              <br />
+              数字は半角で入力してください。
+            </p>
+          </header>
+          <button
+            className="button absolute right-4 top-4 text-4xl font-bold"
+            onClick={onClickModalClose}
+          >
+            ×
+          </button>
+        </div>
+      )}
       <section className="l-question relative overflow-y-scroll pb-12">
         <div className="">
           <p className="mb-16 text-7xl font-extrabold leading-relaxed md:mb-20 md:text-9xl md:leading-relaxed">

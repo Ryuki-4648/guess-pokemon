@@ -25,7 +25,9 @@
 .l-question {
   height: 80%;
 }
-.l-answer {
+.l-modal {
+  background-color: #e3ddd8;
+  transform: translate(-50%, -50%);
 }
 input::placeholder {
   color: #c9c9c9;
