@@ -4,16 +4,21 @@ import "./App.css";
 import zukanList from "./zukanList.json";
 
 function App() {
+  const color01 = "#e3ddd8";
+  const color02 = "#B91C1C";
+
   const [randomZukan, setRandomZukan] = useState(
     zukanList[Math.floor(Math.random() * zukanList.length)]
   );
   //console.log(randomZukan.answer);
+
   const onClickNextQuiz = () => {
     setRandomZukan(zukanList[Math.floor(Math.random() * zukanList.length)]);
     setInputText("");
     setResult("");
     setModalShow(false);
   };
+
   const onClickSubmitButton = () => {
     if (inputText === randomZukan.answer) {
       setResult("◯");
@@ -21,10 +26,22 @@ function App() {
       setResult("×");
     }
   };
+
   const onClickModalClose = () => {
     setModalShow(false);
   };
   const [modalShow, setModalShow] = useState(true);
+
+  const [isModalButtonHover, setIsModalButtonHover] = useState(false);
+  const onHoverModalButton = () => {
+    setIsModalButtonHover(true);
+  };
+  const onLeaveModalButton = () => {
+    setIsModalButtonHover(false);
+  };
+  const modalButtonStyle = {
+    color: isModalButtonHover ? color02 : "inherit",
+  };
 
   const [answer, setAnswer] = useState("");
   const [inputText, setInputText] = useState("");
@@ -33,23 +50,30 @@ function App() {
   return (
     <div className="App relative overflow-y-hidden">
       {modalShow && (
-        <div className="hoge l-modal absolute left-1/2 top-1/2 z-10 h-4/5 w-1/3 rounded-md p-8">
+        <div className="hoge l-modal absolute left-1/2 top-1/2 z-10 h-80 w-1/3 rounded-md border border-stone-900 p-8">
           <header className="l-header flex flex-wrap items-center">
-            <img src={logo} className="App-logo mr-2 w-24 px-2" alt="logo" />
+            <img
+              src={logo}
+              className="App-logo mx-auto mb-6 block w-28 px-2 text-center"
+              alt="logo"
+            />
             <p className="w-full text-center text-xl font-bold leading-8 tracking-wider">
               ポケモンずかんの文章から、
               <br />
               なんのポケモンか当ててください。
               <br />
               <br />
-              こたえはカタカナで入力してください。
+              こたえはカタカナで入力し、
               <br />
-              数字は半角で入力してください。
+              数字は半角にしてください。
             </p>
           </header>
           <button
             className="button absolute right-4 top-4 text-4xl font-bold"
             onClick={onClickModalClose}
+            style={modalButtonStyle}
+            onMouseEnter={onHoverModalButton}
+            onMouseLeave={onLeaveModalButton}
           >
             ×
           </button>
