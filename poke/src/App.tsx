@@ -17,9 +17,11 @@ function App() {
     setInputText("");
     setResult("");
     setModalShow(false);
+    setAnswer("");
   };
 
   const onClickSubmitButton = () => {
+    setAnswer(randomZukan.answer);
     if (inputText === randomZukan.answer) {
       setResult("◯");
     } else {
@@ -133,9 +135,7 @@ function App() {
           <div className="flex flex-wrap items-center pl-8">
             <p className="mr-16 w-4 text-6xl font-bold">{result}</p>
             <p className="mr-2 block text-2xl font-bold">こたえは</p>
-            <p className="text-4xl font-bold text-red-700">
-              {randomZukan.answer}
-            </p>
+            <p className="text-4xl font-bold text-red-700">{answer}</p>
           </div>
         </div>
       </section>
