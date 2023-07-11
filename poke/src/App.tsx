@@ -107,14 +107,8 @@ function App() {
             ポケモンWiki
           </a>
         </div>
-        <p
-          className="fixed bottom-9 right-8 cursor-pointer text-xl font-bold text-blue-800"
-          onClick={onClickNextQuiz}
-        >
-          次のクイズに進む
-        </p>
       </section>
-      <section className="l-answer flex items-center border-t border-gray-900 md:pl-8">
+      <section className="l-answer relative flex items-center border-t border-gray-900 md:pl-8">
         <div className="flex flex-wrap items-center md:flex-nowrap">
           <div className="flex flex-wrap items-center border-r border-gray-900 pt-4 md:h-24 md:flex-nowrap md:pr-4 md:pt-0">
             <input
@@ -126,18 +120,24 @@ function App() {
             />
             <p className="mx-6 text-4xl font-bold">に</p>
             <button
-              className="mt-4 h-16 w-72 rounded-full bg-red-700 text-3xl font-bold text-white md:mt-0"
+              className="mt-4 h-16 w-72 rounded-full bg-red-700 text-3xl font-bold text-white hover:bg-white hover:text-red-700 md:mt-0"
               onClick={onClickSubmitButton}
             >
               きめた！
             </button>
           </div>
           <div className="flex flex-wrap items-center pl-8">
-            <p className="mr-16 w-4 text-6xl font-bold">{result}</p>
+            <p className="mr-16 w-12 text-6xl font-bold">{result}</p>
             <p className="mr-2 block text-2xl font-bold">こたえは</p>
             <p className="text-4xl font-bold text-red-700">{answer}</p>
           </div>
         </div>
+        <p
+          className="absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer text-xl font-bold text-blue-800 hover:underline"
+          onClick={onClickNextQuiz}
+        >
+          次のクイズに進む
+        </p>
       </section>
     </div>
   );
