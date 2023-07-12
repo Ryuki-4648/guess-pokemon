@@ -1,54 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "./logo01.png";
 import "./App.css";
-import zukanList from "./zukanList.json";
+import { PokeQuiz } from "./hooks/pokeQuizHooks";
 
 function App() {
-  const color01 = "#e3ddd8";
-  const color02 = "#B91C1C";
-
-  const [randomZukan, setRandomZukan] = useState(
-    zukanList[Math.floor(Math.random() * zukanList.length)]
-  );
-  //console.log(randomZukan.answer);
-
-  const onClickNextQuiz = () => {
-    setRandomZukan(zukanList[Math.floor(Math.random() * zukanList.length)]);
-    setInputText("");
-    setResult("");
-    setModalShow(false);
-    setAnswer("");
-  };
-
-  const onClickSubmitButton = () => {
-    setAnswer(randomZukan.answer);
-    if (inputText === randomZukan.answer) {
-      setResult("◯");
-    } else {
-      setResult("×");
-    }
-  };
-
-  const onClickModalClose = () => {
-    setModalShow(false);
-  };
-  const [modalShow, setModalShow] = useState(true);
-
-  const [isModalButtonHover, setIsModalButtonHover] = useState(false);
-  const onHoverModalButton = () => {
-    setIsModalButtonHover(true);
-  };
-  const onLeaveModalButton = () => {
-    setIsModalButtonHover(false);
-  };
-  const modalButtonStyle = {
-    color: isModalButtonHover ? color02 : "inherit",
-  };
-
-  const [answer, setAnswer] = useState("");
-  const [inputText, setInputText] = useState("");
-  const [result, setResult] = useState("");
-
+  const {
+    randomZukan,
+    onClickNextQuiz,
+    onClickSubmitButton,
+    onClickModalClose,
+    modalShow,
+    modalButtonStyle,
+    onHoverModalButton,
+    onLeaveModalButton,
+    answer,
+    inputText,
+    setInputText,
+    result,
+  } = PokeQuiz();
   return (
     <div className="App relative overflow-y-hidden">
       {modalShow && (
