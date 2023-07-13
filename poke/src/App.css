@@ -24,11 +24,6 @@
 }
 .l-modal {
   background-color: #e3ddd8;
-  transform: translate(-50%, -50%);
-}
-.l-answer {
-  height: 10%;
-  min-height: 96px;
 }
 input::placeholder {
   color: #c9c9c9;
@@ -39,8 +34,5 @@ input::placeholder {
 @media (max-width: 1024px) {
   .l-question {
     height: 70%;
-  }
-  .l-answer {
-    height: auto;
   }
 }
