@@ -11,6 +11,7 @@ function App() {
     onClickNextQuiz,
     onClickSubmitButton,
     onClickModalClose,
+    onClickOverlay,
     modalShow,
     modalButtonStyle,
     onHoverModalButton,
@@ -19,9 +20,16 @@ function App() {
     inputText,
     setInputText,
     result,
+    overlay,
   } = PokeQuiz();
   return (
     <div className="App relative overflow-y-hidden">
+      {overlay && (
+        <div
+          className="absolute left-0 top-0 z-10 h-full w-full cursor-pointer bg-black opacity-60"
+          onClick={onClickOverlay}
+        ></div>
+      )}
       {modalShow && (
         <div className="hoge l-modal absolute left-1/2 top-1/2 z-10 w-5/6 -translate-x-1/2 -translate-y-1/2 rounded-md border-4 border-stone-900 p-4 sm:h-80 md:px-8 md:py-12 lg:h-96 lg:w-1/3">
           <Header />

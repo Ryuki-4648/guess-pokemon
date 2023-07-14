@@ -9,6 +9,13 @@ export const PokeQuiz = () => {
     zukanList[Math.floor(Math.random() * zukanList.length)]
   );
 
+  const [answer, setAnswer] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [result, setResult] = useState("");
+  const [overlay, setOverlay] = useState(true);
+  const [modalShow, setModalShow] = useState(true);
+  const [isModalButtonHover, setIsModalButtonHover] = useState(false);
+
   const onClickNextQuiz = () => {
     setRandomZukan(zukanList[Math.floor(Math.random() * zukanList.length)]);
     setInputText("");
@@ -26,12 +33,16 @@ export const PokeQuiz = () => {
     }
   };
 
-  const onClickModalClose = () => {
+  const onClickOverlay = () => {
+    setOverlay(false);
     setModalShow(false);
   };
-  const [modalShow, setModalShow] = useState(true);
 
-  const [isModalButtonHover, setIsModalButtonHover] = useState(false);
+  const onClickModalClose = () => {
+    setModalShow(false);
+    setOverlay(false);
+  };
+
   const onHoverModalButton = () => {
     setIsModalButtonHover(true);
   };
@@ -42,15 +53,12 @@ export const PokeQuiz = () => {
     color: isModalButtonHover ? color02 : "inherit",
   };
 
-  const [answer, setAnswer] = useState("");
-  const [inputText, setInputText] = useState("");
-  const [result, setResult] = useState("");
-
   return {
     randomZukan,
     onClickNextQuiz,
     onClickSubmitButton,
     onClickModalClose,
+    onClickOverlay,
     modalShow,
     modalButtonStyle,
     onHoverModalButton,
@@ -59,5 +67,6 @@ export const PokeQuiz = () => {
     inputText,
     setInputText,
     result,
+    overlay,
   };
 };
