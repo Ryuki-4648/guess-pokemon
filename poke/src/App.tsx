@@ -23,7 +23,7 @@ function App() {
     overlay,
   } = PokeQuiz();
   return (
-    <div className="App relative overflow-y-hidden">
+    <div className="App relative h-screen overflow-y-hidden bg-primary">
       {overlay && (
         <div
           className="absolute left-0 top-0 z-10 h-full w-full cursor-pointer bg-black opacity-60"
@@ -31,7 +31,7 @@ function App() {
         ></div>
       )}
       {modalShow && (
-        <div className="hoge l-modal absolute left-1/2 top-1/2 z-10 w-5/6 -translate-x-1/2 -translate-y-1/2 rounded-md border-4 border-stone-900 p-4 sm:h-80 md:px-8 md:py-12 lg:h-96 lg:w-1/3">
+        <div className="absolute left-1/2 top-1/2 z-10 w-5/6 -translate-x-1/2 -translate-y-1/2 rounded-md border-4 border-stone-900 bg-primary p-4 sm:h-80 md:px-8 md:py-12 lg:h-96 lg:w-1/3">
           <Header />
           <button
             className="button absolute right-4 top-4 text-4xl font-bold"

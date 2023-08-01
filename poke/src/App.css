@@ -4,8 +4,6 @@
 
 .App {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  background-color: #e3ddd8;
-  height: 100vh;
 }
 
 .l-question::-webkit-scrollbar {
@@ -21,9 +19,6 @@
 }
 .l-question {
   max-height: 85%;
-}
-.l-modal {
-  background-color: #e3ddd8;
 }
 input::placeholder {
   color: #c9c9c9;

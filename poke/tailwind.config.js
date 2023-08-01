@@ -4,7 +4,11 @@ module.exports = {
   darkMode: false,
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#e3ddd8",
+      },
+    },
   },
   purge: [
     "./src/**/*.{js,ts,jsx,tsx}",
